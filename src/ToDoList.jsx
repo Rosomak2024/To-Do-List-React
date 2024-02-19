@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ToDoListItem } from "./ToDoListItem";
 
 export const ToDoList = () => {
-  const [task, setTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
@@ -10,14 +10,26 @@ export const ToDoList = () => {
   };
 
   const handleAddTask = () => {
-    setTask((prevState) => [...prevState, inputValue]);
+    setTasks((prevState) => [...prevState, inputValue]);
     setInputValue("");
   };
 
   const handleRemoveTask = (index) => {
-    const newTasks = [...task];
-    newTasks.splice(index, 1);
-    setTask(newTasks);
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1); //at  possition index remove 1 item.
+    setTasks(newTasks);
+  };
+
+  const handleEditTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1, inputValue);
+    setTasks(newTasks);
+    setInputValue("");
+
+    console.log("tasks", tasks);
+    console.log("newTasks", newTasks);
+    console.log("idex", index);
+    console.log("input value", input.value);
   };
 
   return (
@@ -31,13 +43,14 @@ export const ToDoList = () => {
         onChange={handleInputChange}
       ></input>
       <ul>
-        {task.map((task, index) => {
+        {tasks.map((task, index) => {
           return (
             <ToDoListItem
               key={index}
               taskName={task}
               taskIndex={index}
               handleRemoveTask={handleRemoveTask}
+              handleEditTask={handleEditTask}
             />
           );
         })}

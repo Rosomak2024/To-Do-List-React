@@ -8,6 +8,9 @@ export const ToDoListItem = (props) => {
       <button onClick={() => props.handleRemoveTask(props.taskIndex)}>
         Remove
       </button>{" "}
+      <button onClick={() => props.handleEditTask(props.taskIndex)}>
+        Edit
+      </button>
     </>
   );
 };
