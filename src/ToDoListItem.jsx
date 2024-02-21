@@ -9,6 +9,7 @@ export const ToDoListItem = (props) => {
         id={props.taskIndex}
         onChange={props.handleInputEditChange}
         value={props.inputEditValue}
+        placeholder="edit task here"
       ></input>
       <button
         id="remove_btn"

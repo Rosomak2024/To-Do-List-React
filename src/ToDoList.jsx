@@ -19,19 +19,20 @@ export const ToDoList = () => {
   };
 
   const handleRemoveTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1); //at  possition index remove 1 item.
-    setTasks(newTasks);
+    setTasks((prevTasks) => {
+      const newTasks = [...prevTasks];
+      newTasks.splice(index, 1); //at  possition index remove 1 item.
+      return newTasks;
+    });
   };
 
   const handleEditTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1, inputEditValue);
-    setTasks(newTasks);
-    setInputEditValue("");
-    console.log("inputValue", inputEditValue);
-    console.log("tasks", tasks);
-    console.log("newTasks", newTasks);
+    setTasks((prevTasks) => {
+      const newTasks = [...prevTasks];
+      newTasks.splice(index, 1, inputEditValue);
+      // setInputEditValue("");
+      return newTasks;
+    });
   };
 
   return (
