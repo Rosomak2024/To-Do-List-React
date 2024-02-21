@@ -5,10 +5,21 @@ export const ToDoListItem = (props) => {
   return (
     <>
       <li key={props.taskIndex}>{props.taskName}</li>
-      <button onClick={() => props.handleRemoveTask(props.taskIndex)}>
+      <input
+        id={props.taskIndex}
+        onChange={props.handleInputEditChange}
+        value={props.inputEditValue}
+      ></input>
+      <button
+        id="remove_btn"
+        onClick={() => props.handleRemoveTask(props.taskIndex)}
+      >
         Remove
-      </button>{" "}
-      <button onClick={() => props.handleEditTask(props.taskIndex)}>
+      </button>
+      <button
+        id="edit_btn"
+        onClick={() => props.handleEditTask(props.taskIndex)}
+      >
         Edit
       </button>
     </>
